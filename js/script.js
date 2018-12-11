@@ -26,6 +26,10 @@ searchDiv.className = "student-search"
 input.placeholder = "Search for students..."
 button.textContent = "Search"
 
+searchDiv.append(input);
+searchDiv.append(button);
+
+pageHeader[0].append(searchDiv);
 
 /*** 
    Create the `showPage` function to hide all of the items in the 
