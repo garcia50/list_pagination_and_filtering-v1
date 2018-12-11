@@ -17,6 +17,7 @@ FSJS project 2 - List Filter and Pagination
    scoped to that function.
 ***/
 
+const pageHeader = document.getElementsByClassName("page-header cf");
 
 
 
