@@ -18,6 +18,9 @@ FSJS project 2 - List Filter and Pagination
 ***/
 
 const pageHeader = document.getElementsByClassName("page-header cf");
+const searchDiv = document.createElement('div');
+const input = document.createElement('input');
+const button = document.createElement('button');
 
 
 
