@@ -76,6 +76,12 @@ Divide total number of students by ten
 ***/
 var pageCount = Math.floor(masterStudentList.length / 10)
 
+// Add page to pageCount if remainder exist
+if ((masterStudentList.length % 10) > 0) {
+  pageCount++
+}
+
+
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
