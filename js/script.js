@@ -28,7 +28,6 @@ button.textContent = "Search";
 
 searchDiv.append(input);
 searchDiv.append(button);
-
 pageHeader[0].append(searchDiv);
 
 /*** 
