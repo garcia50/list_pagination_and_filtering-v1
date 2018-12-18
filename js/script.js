@@ -30,6 +30,9 @@ searchDiv.append(input);
 searchDiv.append(button);
 pageHeader[0].append(searchDiv);
 
+
+
+const studentList = document.querySelector('ul');
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
