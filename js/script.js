@@ -102,6 +102,17 @@ pageParentDiv[0].appendChild(paginationDiv)
   for (var i = 0; i < 10; i++) {
     studentList.appendChild(masterStudentList[i])
   }
+// Step 6 - When the user clicks on a pagination number, update the pageNumber variable
+
+ulPagination.addEventListener('click', (e) => {
+  if (e.target && e.target.matches('a')) {
+    var a = e.target 
+    pageNumber = parseInt(a.innerText);
+    removeStudentsFromPage();
+    addStudentsToPage();
+  }
+});
+
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
