@@ -113,6 +113,19 @@ ulPagination.addEventListener('click', (e) => {
   }
 });
 
+function addStudentsToPage() {
+  var masterStudentListCopy = Object.assign([], masterStudentList);
+  let count = 0
+  for (var i = 0; i < masterStudentList.length; i++) {
+    count++
+    if (count != pageNumber) {
+      masterStudentListCopy.splice(0, 10)
+    } else {
+      addElementsToPage(masterStudentListCopy.splice(0, 10));
+    }
+  }
+};
+
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
