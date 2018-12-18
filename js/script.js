@@ -54,6 +54,13 @@ function removeStudentsFromPage() {
   }
 }
 
+function addElementsToPage(elementList) {
+  for (var i = 0; i < elementList.length; i++) {
+    studentList.appendChild(elementList[i])
+  }  
+};
+
+
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
