@@ -82,6 +82,18 @@ if ((masterStudentList.length % 10) > 0) {
 }
 
 
+//Step 3 - Create pagination elements 
+for (var i = 1; i < pageCount + 1; i++) {
+  let liBlock  = `<li>
+                    <a class="active" href="#">${i}</a>
+                  </li>`;  
+
+  ulPagination.innerHTML += liBlock;
+}
+
+pageParentDiv[0].appendChild(paginationDiv)
+
+
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
