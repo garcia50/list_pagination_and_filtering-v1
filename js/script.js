@@ -22,9 +22,9 @@ const searchDiv = document.createElement('div');
 const input = document.createElement('input');
 const button = document.createElement('button');
 
-searchDiv.className = "student-search"
-input.placeholder = "Search for students..."
-button.textContent = "Search"
+searchDiv.className = "student-search";
+input.placeholder = "Search for students...";
+button.textContent = "Search";
 
 searchDiv.append(input);
 searchDiv.append(button);
