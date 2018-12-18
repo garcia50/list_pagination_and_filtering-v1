@@ -16,7 +16,7 @@ FSJS project 2 - List Filter and Pagination
    will only be used inside of a function, then it can be locally 
    scoped to that function.
 ***/
-
+const pageParentDiv = document.getElementsByClassName("page") 
 const pageHeader = document.getElementsByClassName("page-header cf");
 const searchDiv = document.createElement('div');
 const input = document.createElement('input');
