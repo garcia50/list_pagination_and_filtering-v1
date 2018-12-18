@@ -62,6 +62,14 @@ function addElementsToPage(elementList) {
 
 
 /*** 
+Step 1
+Push students('li') into a `studentArry`(array)
+***/
+for (var i = 0; i < studentList.childElementCount; i += 1) {
+  masterStudentList.push(studentList.children[i]);
+}
+
+/*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
 
