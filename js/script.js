@@ -35,6 +35,7 @@ pageHeader[0].append(searchDiv);
 const studentList = document.querySelector('ul');
 const masterStudentList = [];
 
+var liStudents = document.getElementsByTagName('li')
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
