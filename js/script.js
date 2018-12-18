@@ -94,6 +94,9 @@ for (var i = 1; i < pageCount + 1; i++) {
 pageParentDiv[0].appendChild(paginationDiv)
 
 
+// Step 4 - Remove all 'li' elements from the ul on the page
+  removeStudentsFromPage();
+
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
