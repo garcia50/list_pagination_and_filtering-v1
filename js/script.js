@@ -40,6 +40,8 @@ var pageNumber = 1
 
 
 
+const paginationDiv = document.createElement('div');
+paginationDiv.className = "pagination";
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
