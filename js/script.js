@@ -70,6 +70,13 @@ for (var i = 0; i < studentList.childElementCount; i += 1) {
 }
 
 /*** 
+Step 2
+Find out the amount of pages need to fill each up to a total of 10 people per page
+Divide total number of students by ten
+***/
+var pageCount = Math.floor(masterStudentList.length / 10)
+
+/*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
 
