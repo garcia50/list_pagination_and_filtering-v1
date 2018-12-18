@@ -44,6 +44,16 @@ const paginationDiv = document.createElement('div');
 paginationDiv.className = "pagination";
 const ulPagination = document.createElement('ul');
 paginationDiv.appendChild(ulPagination);
+
+
+
+//Function Definitions 
+function removeStudentsFromPage() {
+  while (studentList.firstElementChild) {
+    studentList.removeChild(studentList.firstElementChild);
+  }
+}
+
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
