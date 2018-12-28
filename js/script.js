@@ -53,6 +53,32 @@ function addElementsToPage(elementList) {
 
 
 //Search bar functionality 
+input.addEventListener('keyup', logKey);
+
+function logKey(e) {
+  for (var i = 0; i < students.length; i += 1) {
+    student = students[i];
+    if ( student.name.toLowerCase() === response.toLowerCase() ) {
+      message = getStudentReport( student );
+      print(message);
+    }
+  }  
+}
+
+
+input.onkeypress = function (e) {
+  var key = e.key || e.which;
+  if (key == 'Enter') {
+    var name = input.value;
+    for (var i = 0; i < studentList.length; i += 1) {
+
+  }
+};
+
+button.addEventListener('click', () => {
+  var name = input.value;
+});
+
 for (var i = 0; i < studentList.childElementCount; i += 1) {
   masterStudentList.push(studentList.children[i]);
 }
