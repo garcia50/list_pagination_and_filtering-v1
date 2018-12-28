@@ -115,10 +115,10 @@ pageParentDiv[0].appendChild(paginationDiv)
 // Remove all 'li' elements from the ul on the page
 removeStudentsFromPage();
 
-  for (var i = 0; i < 10; i++) {
-    studentList.appendChild(masterStudentList[i])
-  }
 // Copy the first ten 'li' elements and place them in the ul 
+for (var i = 0; i < 10; i++) {
+  studentList.appendChild(masterStudentList[i])
+}
 
 /*** 
 When the user clicks on a pagination number, update the pageNumber variable
