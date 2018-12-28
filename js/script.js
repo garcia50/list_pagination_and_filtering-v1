@@ -24,11 +24,6 @@ searchDiv.append(button);
 pageHeader[0].append(searchDiv);
 
 
-
-
-
-
-
 const studentList = document.querySelector('ul');
 const masterStudentList = [];
 
@@ -56,12 +51,14 @@ function addElementsToPage(elementList) {
 input.addEventListener('keyup', logKey);
 
 function logKey(e) {
-  for (var i = 0; i < students.length; i += 1) {
-    student = students[i];
-    if ( student.name.toLowerCase() === response.toLowerCase() ) {
-      message = getStudentReport( student );
-      print(message);
-    }
+  for (var i = 0; i < masterStudentList.length; i += 1) {
+  *****************************************************************  
+    if masterStudentList[i].childNodes[1].innerText EQUALS OR MATCHES e.key
+    console.log(student);
+    // if ( student.name.toLowerCase() === e.toLowerCase() ) {
+    //   message = getStudentReport( student );
+    //   print(message);
+    // }
   }  
 }
 
@@ -70,8 +67,9 @@ input.onkeypress = function (e) {
   var key = e.key || e.which;
   if (key == 'Enter') {
     var name = input.value;
-    for (var i = 0; i < studentList.length; i += 1) {
+    for (var i = 0; i < masterStudentList.length; i += 1) {
 
+    }
   }
 };
 
