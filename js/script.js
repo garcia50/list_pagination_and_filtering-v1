@@ -25,19 +25,17 @@ pageHeader[0].append(searchDiv);
 
 
 
+
+
+
+
 const studentList = document.querySelector('ul');
 const masterStudentList = [];
-
-var liStudents = document.getElementsByTagName('li')
-var pageNumber = 1
-
-
 
 const paginationDiv = document.createElement('div');
 paginationDiv.className = "pagination";
 const ulPagination = document.createElement('ul');
 paginationDiv.appendChild(ulPagination);
-
 
 
 //Function Definitions 
