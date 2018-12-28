@@ -79,6 +79,11 @@ button.addEventListener('click', () => {
   var name = input.value;
 });
 
+
+
+
+
+//Push students('li') into a `studentArry`(array)
 for (var i = 0; i < studentList.childElementCount; i += 1) {
   masterStudentList.push(studentList.children[i]);
 }
@@ -95,20 +100,20 @@ if ((masterStudentList.length % 10) > 0) {
 }
 
 // Create pagination elements if there are more than 10 students 
+if (pageCount != 1) {
+  for (var i = 1; i < pageCount + 1; i++) {
+    let liBlock  = `<li>
+                      <a class="active" href="#">${i}</a>
+                    </li>`;  
 
-for (var i = 1; i < pageCount + 1; i++) {
-  let liBlock  = `<li>
-                    <a class="active" href="#">${i}</a>
-                  </li>`;  
-
-  ulPagination.innerHTML += liBlock;
+    ulPagination.innerHTML += liBlock;
+  }
 }
-
+//Append paginationDiv to pageParentDiv(which is the first div in the body)
 pageParentDiv[0].appendChild(paginationDiv)
 
-
-  removeStudentsFromPage();
-
+// Remove all 'li' elements from the ul on the page
+removeStudentsFromPage();
 
   for (var i = 0; i < 10; i++) {
     studentList.appendChild(masterStudentList[i])
