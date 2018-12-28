@@ -52,17 +52,13 @@ function addElementsToPage(elementList) {
 };
 
 
-/*** 
-Step 1
-Push students('li') into a `studentArry`(array)
-***/
+//Search bar functionality 
 for (var i = 0; i < studentList.childElementCount; i += 1) {
   masterStudentList.push(studentList.children[i]);
 }
 
 /*** 
-Step 2
-Find out the amount of pages need to fill each up to a total of 10 people per page
+Find out the amount of pages need to fill each up to a total of 10 people per page.
 Divide total number of students by ten
 ***/
 var pageCount = Math.floor(masterStudentList.length / 10)
@@ -72,8 +68,8 @@ if ((masterStudentList.length % 10) > 0) {
   pageCount++
 }
 
+// Create pagination elements if there are more than 10 students 
 
-//Step 3 - Create pagination elements 
 for (var i = 1; i < pageCount + 1; i++) {
   let liBlock  = `<li>
                     <a class="active" href="#">${i}</a>
@@ -85,16 +81,18 @@ for (var i = 1; i < pageCount + 1; i++) {
 pageParentDiv[0].appendChild(paginationDiv)
 
 
-// Step 4 - Remove all 'li' elements from the ul on the page
   removeStudentsFromPage();
 
-// Step 5 - Copy the first ten 'li' elements and place them in the ul 
 
   for (var i = 0; i < 10; i++) {
     studentList.appendChild(masterStudentList[i])
   }
-// Step 6 - When the user clicks on a pagination number, update the pageNumber variable
+// Copy the first ten 'li' elements and place them in the ul 
 
+/*** 
+When the user clicks on a pagination number, update the pageNumber variable
+and call on the removeStudentsFromPage and addStudentsToPage functions.
+***/
 ulPagination.addEventListener('click', (e) => {
   if (e.target && e.target.matches('a')) {
     var a = e.target 
@@ -105,6 +103,12 @@ ulPagination.addEventListener('click', (e) => {
 });
 
 function addStudentsToPage() {
+/*** 
+Use Object assign function to deep copy students into emtpy array that limits
+10 students per page. With a for loop and if statement cycle through the ten 
+selected students at a time until page number matches count, then pass selected
+students through addElementsToPage function.
+***/
   var masterStudentListCopy = Object.assign([], masterStudentList);
   let count = 0
   for (var i = 0; i < masterStudentList.length; i++) {
@@ -117,17 +121,5 @@ function addStudentsToPage() {
   }
 };
 
-// Step 7 - Follow Step 4 
-
-// Step 8 - Using the page number variable add the correct 'li' elements onto the 'ul'
-
-/*** 
--Iterate through populated studentsArray, remove first 10 
--add 1 to count (count++)
--When count MATCHES selected pageNumber, take the amount of students left and add them to the `ul`
--Then, add `ul` to show page
-***/
 
 
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
