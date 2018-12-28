@@ -125,21 +125,22 @@ When the user clicks on a pagination number, update the pageNumber variable
 and call on the removeStudentsFromPage and addStudentsToPage functions.
 ***/
 ulPagination.addEventListener('click', (e) => {
+  var pageNumber = 1
   if (e.target && e.target.matches('a')) {
     var a = e.target 
     pageNumber = parseInt(a.innerText);
     removeStudentsFromPage();
-    addStudentsToPage();
+    addStudentsToPage(pageNumber);
   }
 });
 
-function addStudentsToPage() {
 /*** 
 Use Object assign function to deep copy students into emtpy array that limits
 10 students per page. With a for loop and if statement cycle through the ten 
 selected students at a time until page number matches count, then pass selected
 students through addElementsToPage function.
 ***/
+function addStudentsToPage(pageNumber) {
   var masterStudentListCopy = Object.assign([], masterStudentList);
   let count = 0
   for (var i = 0; i < masterStudentList.length; i++) {
@@ -151,6 +152,3 @@ students through addElementsToPage function.
     }
   }
 };
-
-
-
