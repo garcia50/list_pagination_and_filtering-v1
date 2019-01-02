@@ -64,6 +64,19 @@ Use Object assign function to deep copy students into emtpy array that limits
 selected students at a time until page number matches count, then pass selected
 students through addElementsToPage function.
 ***/
+function addStudentsToPage(pageNumber) {
+  var masterStudentListCopy = Object.assign([], masterStudentList);
+  let count = 0
+  for (var i = 0; i < masterStudentList.length; i++) {
+    count++
+    if (count != pageNumber) {
+      masterStudentListCopy.splice(0, 10)
+    } else {
+      addElementsToPage(masterStudentListCopy.splice(0, 10));
+    }
+  }
+};
+
 //Search bar eventListeners
 
 input.onkeypress = function (e) {
@@ -135,15 +148,3 @@ ulPagination.addEventListener('click', (e) => {
   }
 });
 
-function addStudentsToPage(pageNumber) {
-  var masterStudentListCopy = Object.assign([], masterStudentList);
-  let count = 0
-  for (var i = 0; i < masterStudentList.length; i++) {
-    count++
-    if (count != pageNumber) {
-      masterStudentListCopy.splice(0, 10)
-    } else {
-      addElementsToPage(masterStudentListCopy.splice(0, 10));
-    }
-  }
-};
