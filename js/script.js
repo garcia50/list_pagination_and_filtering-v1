@@ -47,9 +47,14 @@ function addElementsToPage(elementList) {
 };
 
 function logKey(e) {
+  let userInput = document.querySelector('input');
+  removeStudentsFromPage();
   // var masterStudentListCopy = Object.assign([], masterStudentList);
   for (var i = 0; i < masterStudentList.length; i += 1) {
+    if (masterStudentList[i].childNodes[1].innerText.match(userInput.value)) {
+      studentList.appendChild(masterStudentList[i])
       // masterStudentList = masterStudentList.push(masterStudentList[i])
+    }
   }  
 }
 
