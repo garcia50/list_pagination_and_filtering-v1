@@ -46,7 +46,6 @@ function addElementsToPage(elementList) {
   }  
 };
 
-input.addEventListener('keyup', logKey);
 function logKey(e) {
   // var masterStudentListCopy = Object.assign([], masterStudentList);
   for (var i = 0; i < masterStudentList.length; i += 1) {
