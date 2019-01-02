@@ -7,7 +7,7 @@ FSJS project 2 - List Filter and Pagination
 
 
 /*** 
-Create constants and variables that will later be used and manipulated.
+Create and modify constants and variables that will later be used and manipulated.
 ***/
 const pageParentDiv = document.getElementsByClassName("page") 
 const pageHeader = document.getElementsByClassName("page-header cf");
@@ -46,22 +46,21 @@ function addElementsToPage(elementList) {
   }  
 };
 
-
-//Search bar functionality 
 input.addEventListener('keyup', logKey);
-
 function logKey(e) {
+  // var masterStudentListCopy = Object.assign([], masterStudentList);
   for (var i = 0; i < masterStudentList.length; i += 1) {
-  *****************************************************************  
-    if masterStudentList[i].childNodes[1].innerText EQUALS OR MATCHES e.key
-    console.log(student);
-    // if ( student.name.toLowerCase() === e.toLowerCase() ) {
-    //   message = getStudentReport( student );
-    //   print(message);
-    // }
+      // masterStudentList = masterStudentList.push(masterStudentList[i])
   }  
 }
 
+/*** 
+Use Object assign function to deep copy students into emtpy array that limits
+10 students per page. With a for loop and if statement cycle through the ten 
+selected students at a time until page number matches count, then pass selected
+students through addElementsToPage function.
+***/
+//Search bar eventListeners
 
 input.onkeypress = function (e) {
   var key = e.key || e.which;
@@ -81,7 +80,7 @@ button.addEventListener('click', () => {
 
 
 
-//Push students('li') into a `studentArry`(array)
+//Push students('li') into a `masterStudentList`(array)
 for (var i = 0; i < studentList.childElementCount; i += 1) {
   masterStudentList.push(studentList.children[i]);
 }
@@ -132,12 +131,6 @@ ulPagination.addEventListener('click', (e) => {
   }
 });
 
-/*** 
-Use Object assign function to deep copy students into emtpy array that limits
-10 students per page. With a for loop and if statement cycle through the ten 
-selected students at a time until page number matches count, then pass selected
-students through addElementsToPage function.
-***/
 function addStudentsToPage(pageNumber) {
   var masterStudentListCopy = Object.assign([], masterStudentList);
   let count = 0
