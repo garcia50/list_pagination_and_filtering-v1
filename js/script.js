@@ -78,19 +78,18 @@ function addStudentsToPage(pageNumber) {
 };
 
 //Search bar eventListeners
+input.addEventListener('keyup', logKey);
 
 input.onkeypress = function (e) {
   var key = e.key || e.which;
   if (key == 'Enter') {
-    var name = input.value;
-    for (var i = 0; i < masterStudentList.length; i += 1) {
-
-    }
+    logKey();
   }
 };
 
-button.addEventListener('click', () => {
-  var name = input.value;
+const searchButton = document.querySelector('button');
+searchButton.addEventListener('click', () => {
+  logKey();
 });
 
 
