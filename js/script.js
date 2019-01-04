@@ -26,6 +26,7 @@ pageHeader[0].append(searchDiv);
 
 const studentList = document.querySelector('ul');
 const masterStudentList = [];
+var searchResultsList = []
 
 const paginationDiv = document.createElement('div');
 paginationDiv.className = "pagination";
