@@ -111,15 +111,19 @@ const firstTen = (students) => {
   }
 }
 
-/*** 
-Find out the amount of pages need to fill each up to a total of 10 people per page.
-Divide total number of students by ten
-***/
-var pageCount = Math.floor(masterStudentList.length / 10)
+const final = (students = masterStudentList) => {
+  /*** 
+  Find out the amount of pages need to fill each up to a total of 10 people per page.
+  Divide total number of students by ten
+  ***/
+  // console.log(students)
+  var pageCount = Math.floor(students.length / 10)
 
-// Add page to pageCount if remainder exist
-if ((masterStudentList.length % 10) > 0) {
-  pageCount++
+  // Add page to pageCount if remainder exist
+  if ((students.length % 10) > 0) {
+    pageCount++
+  }
+
 }
 
 // Create pagination elements if there are more than 10 students 
