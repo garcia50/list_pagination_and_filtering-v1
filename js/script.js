@@ -67,6 +67,7 @@ students through addElementsToPage function.
 ***/
 function addStudentsToPage(pageNumber) {
   var masterStudentListCopy = Object.assign([], masterStudentList);
+  var list = searchResultsList.length > 0 ? searchResultsList : masterStudentList
   let count = 0
   for (var i = 0; i < masterStudentList.length; i++) {
     count++
