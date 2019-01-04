@@ -38,14 +38,14 @@ searchButton.addEventListener('click', () => {
 });
 
 /*** 
-When the user clicks on a pagination number, update the pageNumber variable
-and call on the removeStudentsFromPage and addStudentsToPage functions.
+When the user clicks on a pagination number, update the pageNumber variable 
+by using the target property and the innerText method and call the 
+`addStudentsToPage` functions.
 ***/
 ulPagination.addEventListener('click', (e) => {
   var pageNumber = 1
   if (e.target && e.target.matches('a')) {
-    var a = e.target 
-    pageNumber = parseInt(a.innerText);
+    pageNumber = parseInt(e.target.innerText);
     var students = studentListForPagination(pageNumber);
     addStudentsToPage(students);
   }
@@ -74,8 +74,8 @@ const addStudentsToPage = (students) => {
 /*** 
 Use Object assign function to deep copy students into emtpy array that limits
 10 students per page. With a for loop and if statement cycle through the ten 
-selected students at a time until page number matches count, then pass selected
-students through addElementsToPage function.
+selected students at a time until page number matches count, then return proper 
+students or else splice/remove the following students.
 ***/
 const studentListForPagination = (pageNumber) => {
   var list = searchResultsList.length > 0 ? searchResultsList : masterStudentList
@@ -91,6 +91,7 @@ const studentListForPagination = (pageNumber) => {
   }
 } 
 
+//Using the keyup function record the users input
 function logKey() {
   let userInput = document.querySelector('input').value;
   removeStudentsFromPage();
@@ -106,6 +107,7 @@ const createPagination = (students = masterStudentList) => {
   if ((students.length % 10) > 0) {
     pageCount++
   }
+  //Resets `ulPagination` div if search feature is used
   ulPagination.innerHTML = '';
   // Create pagination elements if there are more than 10 students 
   if (pageCount != 1) {
