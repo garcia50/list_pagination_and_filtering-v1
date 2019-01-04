@@ -67,7 +67,7 @@ function addStudentsToPage(pageNumber) {
   }
 };
 
-function logKey(e) {
+function logKey() {
   let userInput = document.querySelector('input').value;
   removeStudentsFromPage();
   check(userInput);
