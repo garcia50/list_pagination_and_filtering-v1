@@ -51,7 +51,7 @@ ulPagination.addEventListener('click', (e) => {
   }
 });
 
-//Function Definitions 
+//Function Definitions
 const removeStudentsFromPage = () => {
   while (studentList.firstElementChild) {
     studentList.removeChild(studentList.firstElementChild);
@@ -91,7 +91,7 @@ const studentListForPagination = (pageNumber) => {
   }
 } 
 
-//Using the keyup function record the users input
+//Using the keyup function record the users input and return appropiate students
 function logKey() {
   let userInput = document.querySelector('input').value;
   removeStudentsFromPage();
