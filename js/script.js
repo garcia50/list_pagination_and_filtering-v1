@@ -94,15 +94,13 @@ const studentListForPagination = (pageNumber) => {
 function logKey() {
   let userInput = document.querySelector('input').value;
   removeStudentsFromPage();
-  check(userInput);
+  populateSearchResultsList(userInput);
+  createPagination(searchResultsList);
 }
 
 const createPagination = (students = masterStudentList) => {
-  /*** 
-  Find out the amount of pages need to fill each up to a total of 10 people per page.
-  Divide total number of students by ten
-  ***/
-  // console.log(students)
+  //Find out the amount of pages need to fill each up to a total of 10 people per page.
+  //Divide total number of students by ten
   var pageCount = Math.floor(students.length / 10)
   // Add page to pageCount if remainder exist
   if ((students.length % 10) > 0) {
@@ -125,26 +123,24 @@ const createPagination = (students = masterStudentList) => {
   addStudentsToPage(students);
 }
 
-const check = (userinp = null) => {
-  // Push students('li') into a `masterStudentList`(array)
+// Push students('li') into a `masterStudentList`(array)
+const populateMasterStudentList = () => {
   for (var i = 0; i < studentList.childElementCount; i += 1) {
     masterStudentList.push(studentList.children[i]);
   }
-  
-  if (userinp != null) {
+}
+
+//Push students('li') into `searchResultsList`(array)
+const populateSearchResultsList = (userInput) => {
+  if (userInput != null) {
     searchResultsList = []
     for (var i = 0; i < masterStudentList.length; i += 1) {
-      if (masterStudentList[i].innerText.match(userinp)) {
+      if (masterStudentList[i].innerText.match(userInput)) {
         searchResultsList.push(masterStudentList[i]);
       }
     }
-    createPagination(searchResultsList);
   } 
-
-  if (userinp == null) {
-    createPagination();
-  }
 }
 
-
-check();  
+populateMasterStudentList();
+createPagination();
