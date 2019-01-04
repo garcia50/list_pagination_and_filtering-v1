@@ -144,6 +144,10 @@ const final = (students = masterStudentList) => {
 
 
 const check = (userinp = null) => {
+
+  // Push students('li') into a `masterStudentList`(array)
+  for (var i = 0; i < studentList.childElementCount; i += 1) {
+    masterStudentList.push(studentList.children[i]);
   }
 
 
