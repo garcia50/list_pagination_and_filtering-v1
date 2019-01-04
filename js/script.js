@@ -22,7 +22,35 @@ const paginationDiv = document.createElement('div');
 paginationDiv.className = "pagination";
 const ulPagination = document.createElement('ul');
 paginationDiv.appendChild(ulPagination);
+const searchButton = document.querySelector('button');
 
+//Search bar eventListeners
+input.addEventListener('keyup', logKey);
+
+input.onkeypress = function (e) {
+  var key = e.key || e.which;
+  if (key == 'Enter') {
+    logKey();
+  }
+};
+
+searchButton.addEventListener('click', () => {
+  logKey();
+});
+
+/*** 
+When the user clicks on a pagination number, update the pageNumber variable
+and call on the removeStudentsFromPage and addStudentsToPage functions.
+***/
+ulPagination.addEventListener('click', (e) => {
+  var pageNumber = 1
+  if (e.target && e.target.matches('a')) {
+    var a = e.target 
+    pageNumber = parseInt(a.innerText);
+    var students = studentListForPagination(pageNumber);
+    addStudentsToPage(students);
+  }
+});
 
 //Function Definitions 
 function removeStudentsFromPage() {
@@ -43,7 +71,6 @@ const addStudentsToPage = (students) => {
   removeStudentsFromPage();
   addElementsToPage(students);
 }
-
 
 /*** 
 Use Object assign function to deep copy students into emtpy array that limits
@@ -70,36 +97,6 @@ function logKey() {
   removeStudentsFromPage();
   check(userInput);
 }
-
-//Search bar eventListeners
-input.addEventListener('keyup', logKey);
-
-input.onkeypress = function (e) {
-  var key = e.key || e.which;
-  if (key == 'Enter') {
-    logKey();
-  }
-};
-
-const searchButton = document.querySelector('button');
-searchButton.addEventListener('click', () => {
-  logKey();
-});
-
-/*** 
-When the user clicks on a pagination number, update the pageNumber variable
-and call on the removeStudentsFromPage and addStudentsToPage functions.
-***/
-ulPagination.addEventListener('click', (e) => {
-  var pageNumber = 1
-  if (e.target && e.target.matches('a')) {
-    var a = e.target 
-    pageNumber = parseInt(a.innerText);
-    var students = studentListForPagination(pageNumber);
-    addStudentsToPage(students);
-  }
-});
-
 
 const createPagination = (students = masterStudentList) => {
   /*** 
@@ -129,14 +126,11 @@ const createPagination = (students = masterStudentList) => {
   addStudentsToPage(students);
 }
 
-
 const check = (userinp = null) => {
-
   // Push students('li') into a `masterStudentList`(array)
   for (var i = 0; i < studentList.childElementCount; i += 1) {
     masterStudentList.push(studentList.children[i]);
   }
-
   
   if (userinp != null) {
     searchResultsList = []
