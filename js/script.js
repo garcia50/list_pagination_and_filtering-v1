@@ -1,6 +1,7 @@
 //Create and modify constants and variables that will later be used and manipulated.
 const pageParentDiv = document.getElementsByClassName("page") 
 const pageHeader = document.getElementsByClassName("page-header cf");
+
 const searchDiv = document.createElement('div');
 const input = document.createElement('input');
 const button = document.createElement('button');
@@ -8,11 +9,9 @@ const button = document.createElement('button');
 searchDiv.className = "student-search";
 input.placeholder = "Search for students...";
 button.textContent = "Search";
-
 searchDiv.append(input);
 searchDiv.append(button);
 pageHeader[0].append(searchDiv);
-
 
 const studentList = document.querySelector('ul');
 const masterStudentList = [];
@@ -53,7 +52,7 @@ ulPagination.addEventListener('click', (e) => {
 });
 
 //Function Definitions 
-function removeStudentsFromPage() {
+const removeStudentsFromPage = () => {
   while (studentList.firstElementChild) {
     studentList.removeChild(studentList.firstElementChild);
   }
@@ -78,7 +77,7 @@ Use Object assign function to deep copy students into emtpy array that limits
 selected students at a time until page number matches count, then pass selected
 students through addElementsToPage function.
 ***/
-function studentListForPagination(pageNumber) {
+const studentListForPagination = (pageNumber) => {
   var list = searchResultsList.length > 0 ? searchResultsList : masterStudentList
   var masterStudentListCopy = Object.assign([], list);
   let count = 0
@@ -90,7 +89,7 @@ function studentListForPagination(pageNumber) {
       masterStudentListCopy.splice(0, 10)
     }
   }
-};
+} 
 
 function logKey() {
   let userInput = document.querySelector('input').value;
