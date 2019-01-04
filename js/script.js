@@ -66,10 +66,10 @@ selected students at a time until page number matches count, then pass selected
 students through addElementsToPage function.
 ***/
 function addStudentsToPage(pageNumber) {
-  var masterStudentListCopy = Object.assign([], masterStudentList);
   var list = searchResultsList.length > 0 ? searchResultsList : masterStudentList
+  var masterStudentListCopy = Object.assign([], list);
   let count = 0
-  for (var i = 0; i < masterStudentList.length; i++) {
+  for (var i = 0; i < list.length; i++) {
     count++
     if (count != pageNumber) {
       masterStudentListCopy.splice(0, 10)
