@@ -103,11 +103,12 @@ ulPagination.addEventListener('click', (e) => {
 });
 
 
+const firstTen = (students) => {
+  var loopCount = students.length < 10 ? students.length : 10
 
-
-//Push students('li') into a `masterStudentList`(array)
-for (var i = 0; i < studentList.childElementCount; i += 1) {
-  masterStudentList.push(studentList.children[i]);
+  for (var i = 0; i < loopCount; i++) {
+    studentList.appendChild(students[i])
+  }
 }
 
 /*** 
