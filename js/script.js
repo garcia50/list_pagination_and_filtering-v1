@@ -145,12 +145,7 @@ const final = (students = masterStudentList) => {
 
 const check = (userinp = null) => {
   }
-}
-//Append paginationDiv to pageParentDiv(which is the first div in the body)
-pageParentDiv[0].appendChild(paginationDiv)
 
-// Remove all 'li' elements from the ul on the page
-removeStudentsFromPage();
 
 // Copy the first ten 'li' elements and place them in the ul 
 for (var i = 0; i < 10; i++) {
