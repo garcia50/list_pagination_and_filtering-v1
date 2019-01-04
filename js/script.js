@@ -41,11 +41,19 @@ function removeStudentsFromPage() {
   }
 }
 
-function addElementsToPage(elementList) {
-  for (var i = 0; i < elementList.length; i++) {
-    studentList.appendChild(elementList[i])
-  }  
-};
+const addElementsToPage = (students) => {
+  var loopCount = students.length < 10 ? students.length : 10
+
+  for (var i = 0; i < loopCount; i++) {
+    studentList.appendChild(students[i])
+  }
+}
+
+const addStudentsToPage = (students) => {
+  removeStudentsFromPage();
+  addElementsToPage(students);
+}
+
 
 /*** 
 Use Object assign function to deep copy students into emtpy array that limits
@@ -53,16 +61,16 @@ Use Object assign function to deep copy students into emtpy array that limits
 selected students at a time until page number matches count, then pass selected
 students through addElementsToPage function.
 ***/
-function addStudentsToPage(pageNumber) {
+function studentListForPagination(pageNumber) {
   var list = searchResultsList.length > 0 ? searchResultsList : masterStudentList
   var masterStudentListCopy = Object.assign([], list);
   let count = 0
   for (var i = 0; i < list.length; i++) {
     count++
-    if (count != pageNumber) {
-      masterStudentListCopy.splice(0, 10)
+    if (count === pageNumber) {
+      return masterStudentListCopy.splice(0, 10)
     } else {
-      addElementsToPage(masterStudentListCopy.splice(0, 10));
+      masterStudentListCopy.splice(0, 10)
     }
   }
 };
@@ -97,28 +105,19 @@ ulPagination.addEventListener('click', (e) => {
   if (e.target && e.target.matches('a')) {
     var a = e.target 
     pageNumber = parseInt(a.innerText);
-    removeStudentsFromPage();
-    addStudentsToPage(pageNumber);
+    var students = studentListForPagination(pageNumber);
+    addStudentsToPage(students);
   }
 });
 
 
-const firstTen = (students) => {
-  var loopCount = students.length < 10 ? students.length : 10
-
-  for (var i = 0; i < loopCount; i++) {
-    studentList.appendChild(students[i])
-  }
-}
-
-const final = (students = masterStudentList) => {
+const createPagination = (students = masterStudentList) => {
   /*** 
   Find out the amount of pages need to fill each up to a total of 10 people per page.
   Divide total number of students by ten
   ***/
   // console.log(students)
   var pageCount = Math.floor(students.length / 10)
-
   // Add page to pageCount if remainder exist
   if ((students.length % 10) > 0) {
     pageCount++
@@ -136,10 +135,8 @@ const final = (students = masterStudentList) => {
   }
   //Append paginationDiv to pageParentDiv(which is the first div in the body)
   pageParentDiv[0].appendChild(paginationDiv)
-
   // Remove all 'li' elements from the ul on the page
-  removeStudentsFromPage();
-  firstTen(students);
+  addStudentsToPage(students);
 }
 
 
@@ -158,17 +155,13 @@ const check = (userinp = null) => {
         searchResultsList.push(masterStudentList[i]);
       }
     }
-    final(searchResultsList);
+    createPagination(searchResultsList);
   } 
 
   if (userinp == null) {
-    final();
+    createPagination();
   }
 }
 
 
-
-check();
-// Copy the first ten 'li' elements and place them in the ul 
-
-// firstTen();
+check();  
