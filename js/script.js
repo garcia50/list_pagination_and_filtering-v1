@@ -1,14 +1,4 @@
-/******************************************
-Treehouse Techdegree:
-FSJS project 2 - List Filter and Pagination
-******************************************/
-   
-// Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
-
-
-/*** 
-Create and modify constants and variables that will later be used and manipulated.
-***/
+//Create and modify constants and variables that will later be used and manipulated.
 const pageParentDiv = document.getElementsByClassName("page") 
 const pageHeader = document.getElementsByClassName("page-header cf");
 const searchDiv = document.createElement('div');
