@@ -166,19 +166,6 @@ const check = (userinp = null) => {
   }
 }
 
-/*** 
-When the user clicks on a pagination number, update the pageNumber variable
-and call on the removeStudentsFromPage and addStudentsToPage functions.
-***/
-ulPagination.addEventListener('click', (e) => {
-  var pageNumber = 1
-  if (e.target && e.target.matches('a')) {
-    var a = e.target 
-    pageNumber = parseInt(a.innerText);
-    removeStudentsFromPage();
-    addStudentsToPage(pageNumber);
-  }
-});
 
 
 check();
