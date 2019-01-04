@@ -150,10 +150,17 @@ const check = (userinp = null) => {
     masterStudentList.push(studentList.children[i]);
   }
 
+  
+  if (userinp != null) {
+    searchResultsList = []
+    for (var i = 0; i < masterStudentList.length; i += 1) {
+      if (masterStudentList[i].innerText.match(userinp)) {
+        searchResultsList.push(masterStudentList[i]);
+      }
+    }
+    final(searchResultsList);
+  } 
 
-// Copy the first ten 'li' elements and place them in the ul 
-for (var i = 0; i < 10; i++) {
-  studentList.appendChild(masterStudentList[i])
 }
 
 /*** 
