@@ -139,9 +139,11 @@ const final = (students = masterStudentList) => {
 
   // Remove all 'li' elements from the ul on the page
   removeStudentsFromPage();
+  firstTen(students);
 }
 
 
+const check = (userinp = null) => {
   }
 }
 //Append paginationDiv to pageParentDiv(which is the first div in the body)
