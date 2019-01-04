@@ -123,6 +123,7 @@ const final = (students = masterStudentList) => {
   if ((students.length % 10) > 0) {
     pageCount++
   }
+  ulPagination.innerHTML = '';
 
 }
 
