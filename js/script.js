@@ -124,17 +124,24 @@ const final = (students = masterStudentList) => {
     pageCount++
   }
   ulPagination.innerHTML = '';
+  // Create pagination elements if there are more than 10 students 
+  if (pageCount != 1) {
+    for (var i = 1; i < pageCount + 1; i++) {
+      let liBlock  = `<li>
+                        <a class="active" href="#">${i}</a>
+                      </li>`;  
 
+      ulPagination.innerHTML += liBlock;
+    }
+  }
+  //Append paginationDiv to pageParentDiv(which is the first div in the body)
+  pageParentDiv[0].appendChild(paginationDiv)
+
+  // Remove all 'li' elements from the ul on the page
+  removeStudentsFromPage();
 }
 
-// Create pagination elements if there are more than 10 students 
-if (pageCount != 1) {
-  for (var i = 1; i < pageCount + 1; i++) {
-    let liBlock  = `<li>
-                      <a class="active" href="#">${i}</a>
-                    </li>`;  
 
-    ulPagination.innerHTML += liBlock;
   }
 }
 //Append paginationDiv to pageParentDiv(which is the first div in the body)
