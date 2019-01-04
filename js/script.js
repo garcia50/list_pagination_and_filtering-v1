@@ -47,18 +47,6 @@ function addElementsToPage(elementList) {
   }  
 };
 
-function logKey(e) {
-  let userInput = document.querySelector('input');
-  removeStudentsFromPage();
-  // var masterStudentListCopy = Object.assign([], masterStudentList);
-  for (var i = 0; i < masterStudentList.length; i += 1) {
-    if (masterStudentList[i].childNodes[1].innerText.match(userInput.value)) {
-      studentList.appendChild(masterStudentList[i])
-      // masterStudentList = masterStudentList.push(masterStudentList[i])
-    }
-  }  
-}
-
 /*** 
 Use Object assign function to deep copy students into emtpy array that limits
 10 students per page. With a for loop and if statement cycle through the ten 
@@ -78,6 +66,12 @@ function addStudentsToPage(pageNumber) {
     }
   }
 };
+
+function logKey(e) {
+  let userInput = document.querySelector('input').value;
+  removeStudentsFromPage();
+  check(userInput);
+}
 
 //Search bar eventListeners
 input.addEventListener('keyup', logKey);
