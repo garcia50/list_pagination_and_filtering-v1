@@ -161,6 +161,9 @@ const check = (userinp = null) => {
     final(searchResultsList);
   } 
 
+  if (userinp == null) {
+    final();
+  }
 }
 
 /*** 
@@ -177,3 +180,8 @@ ulPagination.addEventListener('click', (e) => {
   }
 });
 
+
+check();
+// Copy the first ten 'li' elements and place them in the ul 
+
+// firstTen();
