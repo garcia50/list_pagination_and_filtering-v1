@@ -60,7 +60,6 @@ const removeStudentsFromPage = () => {
 
 const addElementsToPage = (students) => {
   var loopCount = students.length < 10 ? students.length : 10
-
   for (var i = 0; i < loopCount; i++) {
     studentList.appendChild(students[i])
   }
@@ -115,9 +114,10 @@ const createPagination = (students = masterStudentList) => {
   }
   //Resets `ulPagination` div if search feature is used
   ulPagination.innerHTML = '';
-  // Create pagination elements if there are more than 10 students 
+  //Add a message when no results are found
   if (pageCount == 0){
     ulPagination.innerHTML = 'No results were found';
+  // Create pagination elements if there are more than 10 students 
   } else if (pageCount != 1) {
     let liBlock = '';
     for (var i = 1; i < pageCount + 1; i++) {
