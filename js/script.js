@@ -61,7 +61,7 @@ const removeStudentsFromPage = () => {
 const addElementsToPage = (students) => {
   var loopCount = students.length < 10 ? students.length : 10
   for (var i = 0; i < loopCount; i++) {
-    studentList.appendChild(students[i])
+    studentList.appendChild(students[i]);
   }
 }
 
@@ -77,16 +77,16 @@ page number matches count, then return proper students or else splice/remove the
 following students.
 ***/
 const studentListForPagination = (pageNumber) => {
-  var list = searchResultsList.length > 0 ? searchResultsList : masterStudentList
+  var list = searchResultsList.length > 0 ? searchResultsList : masterStudentList;
   var masterStudentListCopy = Object.assign([], list);
-  let count = 0
+  let count = 0;
   createPagination(list);
   for (var i = 0; i < list.length; i++) {
-    count++
+    count++;
     if (count === pageNumber) {
-      return masterStudentListCopy.splice(0, 10)
+      return masterStudentListCopy.splice(0, 10);
     } else {
-      masterStudentListCopy.splice(0, 10)
+      masterStudentListCopy.splice(0, 10);
     }
   }
 } 
@@ -96,10 +96,10 @@ function logKey(e) {
   let userInput = document.querySelector('input').value;
   removeStudentsFromPage();
   populateSearchResultsList(userInput);
-  activePageNumber = 1
+  activePageNumber = 1;
   if (e.key == 'Backspace' && userInput == '') {
     createPagination();
-  } else{
+  } else {
     createPagination(searchResultsList);
   }
 }
@@ -107,10 +107,10 @@ function logKey(e) {
 const createPagination = (students = masterStudentList) => {
   //Find out the amount of pages need to fill each up to a total of 10 people per page.
   //Divide total number of students by ten
-  var pageCount = Math.floor(students.length / 10)
+  var pageCount = Math.floor(students.length / 10);
   // Add page to pageCount if remainder exist
   if ((students.length % 10) > 0) {
-    pageCount++
+    pageCount++;
   }
   //Resets `ulPagination` div if search feature is used
   ulPagination.innerHTML = '';
@@ -134,7 +134,7 @@ const createPagination = (students = masterStudentList) => {
       ulPagination.innerHTML += liBlock;
   }
   //Append paginationDiv to pageParentDiv(which is the first div in the body)
-  pageParentDiv[0].appendChild(paginationDiv)
+  pageParentDiv[0].appendChild(paginationDiv);
   // Remove all 'li' elements from the ul on the page
   addStudentsToPage(students);
 }
@@ -149,10 +149,10 @@ const populateMasterStudentList = () => {
 //Push students('li') into `searchResultsList`(array)
 const populateSearchResultsList = (userInput) => {
   if (userInput != null) {
-    searchResultsList = []
+    searchResultsList = [];
     for (var i = 0; i < masterStudentList.length; i += 1) {
-      var emailRemoved = masterStudentList[i].innerText.replace('@example.com','')
-      var student = emailRemoved.replace('Joined','')
+      var emailRemoved = masterStudentList[i].innerText.replace('@example.com','');
+      var student = emailRemoved.replace('Joined','');
       if (student.match(userInput)) {
         searchResultsList.push(masterStudentList[i]);
       }
