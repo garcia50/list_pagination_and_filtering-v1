@@ -72,19 +72,19 @@ const addStudentsToPage = (students) => {
 }
 
 /*** 
-Use Object assign function to deep copy students into emtpy array that limits
-10 students per page. With a for loop and if statement cycle through the ten 
-selected students at a time until page number matches count, then return proper 
-students or else splice/remove the following students.
+Deep copy students into emtpy array that limits 10 students per page. With a for 
+loop and if statement cycle through the ten selected students at a time until 
+page number matches count, then return proper students or else splice/remove the
+following students.
 ***/
 const studentListForPagination = (pageNumber) => {
   var list = searchResultsList.length > 0 ? searchResultsList : masterStudentList
   var masterStudentListCopy = Object.assign([], list);
   let count = 0
+  createPagination(list);
   for (var i = 0; i < list.length; i++) {
     count++
     if (count === pageNumber) {
-      createPagination(list);
       return masterStudentListCopy.splice(0, 10)
     } else {
       masterStudentListCopy.splice(0, 10)
@@ -128,7 +128,6 @@ const createPagination = (students = masterStudentList) => {
                         <a href="#">${i}</a>
                     </li>`;  
       }
-
     }
       ulPagination.innerHTML += liBlock;
   }
@@ -151,8 +150,8 @@ const populateSearchResultsList = (userInput) => {
   if (userInput != null) {
     searchResultsList = []
     for (var i = 0; i < masterStudentList.length; i += 1) {
-      var noEmail = masterStudentList[i].innerText.replace('@example.com','')
-      var student = noEmail.replace('Joined','')
+      var emailRemoved = masterStudentList[i].innerText.replace('@example.com','')
+      var student = emailRemoved.replace('Joined','')
       if (student.match(userInput)) {
         searchResultsList.push(masterStudentList[i]);
       }
