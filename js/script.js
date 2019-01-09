@@ -1,10 +1,11 @@
 //Create and modify constants and variables that will later be used and manipulated.
-const pageParentDiv = document.getElementsByClassName("page") 
+const pageParentDiv = document.getElementsByClassName("page"); 
 const pageHeader = document.getElementsByClassName("page-header cf");
 
 const searchDiv = document.createElement('div');
 const input = document.createElement('input');
 const button = document.createElement('button');
+var activePageNumber = 1
 
 searchDiv.className = "student-search";
 input.placeholder = "Search for students...";
@@ -15,7 +16,7 @@ pageHeader[0].append(searchDiv);
 
 const studentList = document.querySelector('ul');
 const masterStudentList = [];
-var searchResultsList = []
+var searchResultsList = [];
 
 const paginationDiv = document.createElement('div');
 paginationDiv.className = "pagination";
@@ -29,12 +30,12 @@ input.addEventListener('keyup', logKey);
 input.onkeypress = function (e) {
   var key = e.key || e.which;
   if (key == 'Enter') {
-    logKey();
+    logKey(e);
   }
 };
 
-searchButton.addEventListener('click', () => {
-  logKey();
+searchButton.addEventListener('click', (e) => {
+  logKey(e);
 });
 
 /*** 
@@ -43,10 +44,9 @@ by using the target property and the innerText method and call the
 `addStudentsToPage` functions.
 ***/
 ulPagination.addEventListener('click', (e) => {
-  var pageNumber = 1
   if (e.target && e.target.matches('a')) {
-    pageNumber = parseInt(e.target.innerText);
-    var students = studentListForPagination(pageNumber);
+    activePageNumber = parseInt(e.target.innerText);
+    var students = studentListForPagination(activePageNumber);
     addStudentsToPage(students);
   }
 });
@@ -84,6 +84,7 @@ const studentListForPagination = (pageNumber) => {
   for (var i = 0; i < list.length; i++) {
     count++
     if (count === pageNumber) {
+      createPagination(list);
       return masterStudentListCopy.splice(0, 10)
     } else {
       masterStudentListCopy.splice(0, 10)
@@ -92,11 +93,16 @@ const studentListForPagination = (pageNumber) => {
 } 
 
 //Using the keyup function record the users input and return appropiate students
-function logKey() {
+function logKey(e) {
   let userInput = document.querySelector('input').value;
   removeStudentsFromPage();
   populateSearchResultsList(userInput);
-  createPagination(searchResultsList);
+  activePageNumber = 1
+  if (e.key == 'Backspace' && userInput == '') {
+    createPagination();
+  } else{
+    createPagination(searchResultsList);
+  }
 }
 
 const createPagination = (students = masterStudentList) => {
@@ -111,13 +117,20 @@ const createPagination = (students = masterStudentList) => {
   ulPagination.innerHTML = '';
   // Create pagination elements if there are more than 10 students 
   if (pageCount != 1) {
+    let liBlock = '';
     for (var i = 1; i < pageCount + 1; i++) {
-      let liBlock  = `<li>
-                        <a class="active" href="#">${i}</a>
-                      </li>`;  
+      if (i == activePageNumber){
+        liBlock += `<li>
+                      <a class="active" href="#">${i}</a>
+                    </li>`;
+      } else {
+        liBlock += `<li>
+                        <a href="#">${i}</a>
+                    </li>`;  
+      }
 
-      ulPagination.innerHTML += liBlock;
     }
+      ulPagination.innerHTML += liBlock;
   }
   //Append paginationDiv to pageParentDiv(which is the first div in the body)
   pageParentDiv[0].appendChild(paginationDiv)
@@ -134,14 +147,17 @@ const populateMasterStudentList = () => {
 
 //Push students('li') into `searchResultsList`(array)
 const populateSearchResultsList = (userInput) => {
+  // if (userInput == '')
   if (userInput != null) {
     searchResultsList = []
     for (var i = 0; i < masterStudentList.length; i += 1) {
-      if (masterStudentList[i].innerText.match(userInput)) {
+      var noEmail = masterStudentList[i].innerText.replace('@example.com','')
+      var student = noEmail.replace('Joined','')
+      if (student.match(userInput)) {
         searchResultsList.push(masterStudentList[i]);
       }
     }
-  } 
+  }
 }
 
 populateMasterStudentList();
