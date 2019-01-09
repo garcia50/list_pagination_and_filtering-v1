@@ -116,7 +116,9 @@ const createPagination = (students = masterStudentList) => {
   //Resets `ulPagination` div if search feature is used
   ulPagination.innerHTML = '';
   // Create pagination elements if there are more than 10 students 
-  if (pageCount != 1) {
+  if (pageCount == 0){
+    ulPagination.innerHTML = 'No results were found';
+  } else if (pageCount != 1) {
     let liBlock = '';
     for (var i = 1; i < pageCount + 1; i++) {
       if (i == activePageNumber){
@@ -146,7 +148,6 @@ const populateMasterStudentList = () => {
 
 //Push students('li') into `searchResultsList`(array)
 const populateSearchResultsList = (userInput) => {
-  // if (userInput == '')
   if (userInput != null) {
     searchResultsList = []
     for (var i = 0; i < masterStudentList.length; i += 1) {
